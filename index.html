@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mahmoud's Landing Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        /* Loading Screen Styles */
+        
+
+        /* Smooth Scroll Styles */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Button Animation */
+        .btn-animate {
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .btn-animate:hover {
+            background-color: #444;
+            transform: scale(1.05);
+        }
+
+        /* Form Animation */
+        .form-animate {
+            transition: opacity 0.5s, transform 0.5s;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .form-animate.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+    <script>
+        // Track the previously selected radio button
+        let previousRadio = null;
+
+        function handleRadioClick(event) {
+    if (previousRadio && previousRadio === event.target) {
+        previousRadio.checked = false;
+        previousRadio = null;
+    } else {
+        previousRadio = event.target;
+    }
+    showManualInput();
+}
+
+        function showSequenceB() {
+            const goal = document.querySelector('input[name="goal"]:checked')?.value;
+            document.getElementById('sequence-b').style.display = (goal === 'setup-business-dubai' || 'setup-business-GCC') ? 'block' : 'none';
+        }
+
+        function showManualInput() {
+    const goal = document.querySelector('input[name="goal"]:checked')?.value;
+    const manualInputs = document.getElementsByClassName('manual-input');
+    for (let i = 0; i < manualInputs.length; i++) {
+        manualInputs[i].style.display = (goal === 'setup-business-dubai' || goal === 'scale-across-GCC') ? 'block' : 'none';
+    }
+}
+
+        function sendDiscordMessage(data) {
+  const url = "https://discord.com/api/v9/channels/1261043550599118949/messages";
+  const auth = "NTQxNjYzNzczMjYyNjEwNDUz.Gc_Qfe.SyVnZ03LICgT8VwyX3FChqhEWxBu83CLVM8AB8";
+
+  const formattedContent = `**ARR:** ${data['business-details']}
+**Business Location:** ${data['business-location']}
+**Email:** ${data['email']}
+**Goal:** ${data['goal']}
+**Name:** ${data['name']}
+**Phone:** ${data['phone']}
+**Linkedin:** ${data['linkedin-url']}`;
+
+  const payload = {
+    content: `[AUTOMATED]: ${formattedContent}`,
+    components: [
+      {
+        type: 1,
+        components: [
+          {
+            type: 2,
+            style: 5,
+            label: "LinkedIn Profile",
+            url: data['linkedin-url']
+          }
+        ]
+      }
+    ]
+  };
+
+  const headers = new Headers({
+    "Authorization": auth,
+    "Content-Type": "application/json"
+  });
+
+  const options = {
+    method: "POST",
+    headers: headers,
+    body: JSON.stringify(payload)
+  };
+
+  fetch(url, options)
+    .then(response => response.json())
+    .then(data => console.log(data))
+    .catch(error => console.error('Error:', error));
+}
+
+
+        function showFinalStep() {
+            document.getElementById('final-step').style.display = 'block';
+        }
+
+        function submitForm() {
+               // Collect all form data
+    const formData = new FormData(document.querySelector('form'));
+    const data = {};
+    formData.forEach((value, key) => {
+        data[key] = value;
+    });
+
+    // Collect manual inputs separately if they are visible
+    const manualInputs = document.querySelectorAll('.manual-input input');
+    manualInputs.forEach(input => {
+        if (input.style.display !== 'none') {
+            data[input.name] = input.value;
+        }
+    });
+    sendDiscordMessage(data)
+    // Display data in console (for testing purposes)
+    console.log(data);
+
+    // Replace with actual form submission logic
+    alert('Form submitted! Check the console for data.');
+}
+
+    </script>
+</head>
+<body class="bg-gray-50">
+    <div class="max-w-5xl mx-auto p-6">
+        <header class="flex justify-between items-center mb-12">
+            <h1 class="text-3xl font-bold">MB</h1>
+            <a href="#myForm"><button class="border border-gray-400 text-gray-600 py-2 px-4 rounded-full">Book an intro call</button></a>
+        </header>
+        
+        <main class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div>
+                <h2 class="text-2xl font-medium">Hi, I'm Mahmoud. <span></span></h2>
+                <p class="mt-4 text-lg">From managing AED 2.5 billion at some of the UAE’s top banks, like ENBD and FAB, to selling my startup, UNDER500, to a $1.6 billion unicorn - Kitopi, I've done it all.</p>
+                <p class="mt-4 text-lg">With these diverse experiences and rich acumen, I specialize in helping companies unlock opportunities for growth and expand into the GCC market.</p>
+                <p class="mt-4 text-lg"><strong>I can help you build the next unicorn.</strong></p>
+                
+              <a href="#myForm"><button class="mt-6 bg-black text-white py-3 px-6 rounded-full">Work with Mahmoud</button></a>  
+            </div>
+            <div class="flex justify-center items-center">
+                <img src="/mahmoud1.jpg" alt="Mahmoud interviewing at CNN" class="rounded-lg shadow-md">
+            </div>
+        </main>
+        
+        <footer class="mt-12">
+            <p class="text-center text-gray-500 text-sm mb-4">MY WORK HAS BEEN FEATURED IN</p>
+            <div class="flex justify-center items-center space-x-6">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/CNN_International_logo.svg/2048px-CNN_International_logo.svg.png" alt="CNN" class="h-10">
+                <img src="https://logos-world.net/wp-content/uploads/2022/01/BBC-Emblem.png" alt="BBC" class="h-10">
+                <img src="https://naseba.com/wp-content/uploads/2018/02/entrepreneurME.jpg" alt="Entrepreneur Middle East" class="h-10">
+                <img src="data:image/png;base64,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" alt="Entrepreneur Middle East" class="h-10">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSu5I8LgcFF29uN4NVmdH8rwiGwGbOvcbGKXAK95U8qOT39vCCVSC39TXIbERPbGGW-wKQ&usqp=CAU" alt="The National" class="h-10">
+            </div>
+            <br>
+            <br>
+            <br>
+        </footer>
+<hr>
+<br>
+<br>
+<br>
+<main class="grid grid-cols-1 md:grid-cols-2 gap-8">
+    <div class="flex justify-center items-center">
+        <img src="/mahmoud2.jpeg" alt="Mahmoud interviewing at CNN" class="rounded-lg shadow-md">
+    </div>
+    <div>
+        <h2 class="text-2xl font-medium">Here's some of my work, and how I can help you:<span></span></h2>
+        <ul class="mt-4 text-lg list-disc list-inside">
+            <li>Over a decade of experience in the banking industry</li>
+            <li>Managed AED 2.5 billion at top UAE banks including Emirates NBD and FAB</li>
+            <li>Scaled a company to 6 countries and 25 locations</li>
+            <li>Expert in business setup and expansion in Dubai and the GCC market</li>
+            <li>Experience in securing funding and preparing businesses for investor presentations</li>
+        </ul>
+        <a href="#myForm"><button class="mt-6 bg-black text-white py-3 px-6 rounded-full">Work with Mahmoud</button></a>
+    </div>
+</main>
+<br>
+<br>
+<br>
+<hr style="width: 200%;">
+
+<br>
+<br>
+<br>
+<h2 class="text-2xl font-medium">Let me help you</h2>
+<p class="mt-4 text-lg">Please fill out the form to book a call with me!</p>
+
+<form id="myForm" class="mt-4 text-lg" onsubmit="submitForm(); return false;">
+    <div class="mb-4">
+        <label class="block text-lg font-medium" for="name">Full Name</label>
+        <input class="w-full px-4 py-2 border rounded-md" type="text" id="name" name="name" required>
+    </div>
+
+    <div class="mb-4">
+        <label class="block text-lg font-medium" for="phone">Phone Number</label>
+        <input class="w-full px-4 py-2 border rounded-md" type="tel" id="phone" name="phone" required>
+    </div>
+
+    <div class="mb-4">
+        <label class="block text-lg font-medium" for="email">Email</label>
+        <input class="w-full px-4 py-2 border rounded-md" type="email" id="email" name="email" required>
+    </div>
+
+    <div class="mb-4">
+        <label class="block text-lg font-medium">What is your goal?</label>
+        <div class="mt-2">
+            <label class="inline-flex items-center">
+                <input type="radio" name="goal" value="setup-business-dubai" class="form-radio" onclick="handleRadioClick(event)">
+                <span class="ml-2">I want to setup my business in Dubai</span>
+            </label>
+            <br>
+            <br>
+            <label class="inline-flex items-center">
+                <input type="radio" name="goal" value="scale-across-GCC" class="form-radio" onclick="handleRadioClick(event)">
+                <span class="ml-2">I want to scale across GCC</span>
+            </label>
+            <br>
+            <br>
+            <label class="inline-flex items-center">
+                <input type="radio" name="goal" value="setup-business-later" class="form-radio" onclick="handleRadioClick(event)">
+                <span class="ml-2">I want to set up my business later</span>
+            </label>
+        </div>
+    </div>
+    
+    <div class="manual-input"class="mb-4">
+        <label class="block text-lg font-medium" for="business-location">Where is your business based?</label>
+        <select class="w-full px-4 py-2 border rounded-md" id="business-location" name="business-location" required>
+            <option value="Afghanistan">Afghanistan</option>
+            <option value="Åland Islands">Åland Islands</option>
+            <option value="Albania">Albania</option>
+            <option value="Algeria">Algeria</option>
+            <option value="American Samoa">American Samoa</option>
+            <option value="Andorra">Andorra</option>
+            <option value="Angola">Angola</option>
+            <option value="Anguilla">Anguilla</option>
+            <option value="Antarctica">Antarctica</option>
+            <option value="Antigua and Barbuda">Antigua and Barbuda</option>
+            <option value="Argentina">Argentina</option>
+            <option value="Armenia">Armenia</option>
+            <option value="Aruba">Aruba</option>
+            <option value="Australia">Australia</option>
+            <option value="Austria">Austria</option>
+            <option value="Azerbaijan">Azerbaijan</option>
+            <option value="Bahamas">Bahamas</option>
+            <option value="Bahrain">Bahrain</option>
+            <option value="Bangladesh">Bangladesh</option>
+            <option value="Barbados">Barbados</option>
+            <option value="Belarus">Belarus</option>
+            <option value="Belgium">Belgium</option>
+            <option value="Belize">Belize</option>
+            <option value="Benin">Benin</option>
+            <option value="Bermuda">Bermuda</option>
+            <option value="Bhutan">Bhutan</option>
+            <option value="Bolivia">Bolivia</option>
+            <option value="Bosnia and Herzegovina">Bosnia and Herzegovina</option>
+            <option value="Botswana">Botswana</option>
+            <option value="Bouvet Island">Bouvet Island</option>
+            <option value="Brazil">Brazil</option>
+            <option value="British Indian Ocean Territory">British Indian Ocean Territory</option>
+            <option value="Brunei Darussalam">Brunei Darussalam</option>
+            <option value="Bulgaria">Bulgaria</option>
+            <option value="Burkina Faso">Burkina Faso</option>
+            <option value="Burundi">Burundi</option>
+            <option value="Cambodia">Cambodia</option>
+            <option value="Cameroon">Cameroon</option>
+            <option value="Canada">Canada</option>
+            <option value="Cape Verde">Cape Verde</option>
+            <option value="Cayman Islands">Cayman Islands</option>
+            <option value="Central African Republic">Central African Republic</option>
+            <option value="Chad">Chad</option>
+            <option value="Chile">Chile</option>
+            <option value="China">China</option>
+            <option value="Christmas Island">Christmas Island</option>
+            <option value="Cocos (Keeling) Islands">Cocos (Keeling) Islands</option>
+            <option value="Colombia">Colombia</option>
+            <option value="Comoros">Comoros</option>
+            <option value="Congo">Congo</option>
+            <option value="Congo, The Democratic Republic of The">Congo, The Democratic Republic of The</option>
+            <option value="Cook Islands">Cook Islands</option>
+            <option value="Costa Rica">Costa Rica</option>
+            <option value="Cote D'ivoire">Cote D'ivoire</option>
+            <option value="Croatia">Croatia</option>
+            <option value="Cuba">Cuba</option>
+            <option value="Cyprus">Cyprus</option>
+            <option value="Czech Republic">Czech Republic</option>
+            <option value="Denmark">Denmark</option>
+            <option value="Djibouti">Djibouti</option>
+            <option value="Dominica">Dominica</option>
+            <option value="Dominican Republic">Dominican Republic</option>
+            <option value="Ecuador">Ecuador</option>
+            <option value="Egypt">Egypt</option>
+            <option value="El Salvador">El Salvador</option>
+            <option value="Equatorial Guinea">Equatorial Guinea</option>
+            <option value="Eritrea">Eritrea</option>
+            <option value="Estonia">Estonia</option>
+            <option value="Ethiopia">Ethiopia</option>
+            <option value="Falkland Islands (Malvinas)">Falkland Islands (Malvinas)</option>
+            <option value="Faroe Islands">Faroe Islands</option>
+            <option value="Fiji">Fiji</option>
+            <option value="Finland">Finland</option>
+            <option value="France">France</option>
+            <option value="French Guiana">French Guiana</option>
+            <option value="French Polynesia">French Polynesia</option>
+            <option value="French Southern Territories">French Southern Territories</option>
+            <option value="Gabon">Gabon</option>
+            <option value="Gambia">Gambia</option>
+            <option value="Georgia">Georgia</option>
+            <option value="Germany">Germany</option>
+            <option value="Ghana">Ghana</option>
+            <option value="Gibraltar">Gibraltar</option>
+            <option value="Greece">Greece</option>
+            <option value="Greenland">Greenland</option>
+            <option value="Grenada">Grenada</option>
+            <option value="Guadeloupe">Guadeloupe</option>
+            <option value="Guam">Guam</option>
+            <option value="Guatemala">Guatemala</option>
+            <option value="Guernsey">Guernsey</option>
+            <option value="Guinea">Guinea</option>
+            <option value="Guinea-bissau">Guinea-bissau</option>
+            <option value="Guyana">Guyana</option>
+            <option value="Haiti">Haiti</option>
+            <option value="Heard Island and Mcdonald Islands">Heard Island and Mcdonald Islands</option>
+            <option value="Holy See (Vatican City State)">Holy See (Vatican City State)</option>
+            <option value="Honduras">Honduras</option>
+            <option value="Hong Kong">Hong Kong</option>
+            <option value="Hungary">Hungary</option>
+            <option value="Iceland">Iceland</option>
+            <option value="India">India</option>
+            <option value="Indonesia">Indonesia</option>
+            <option value="Iran, Islamic Republic of">Iran, Islamic Republic of</option>
+            <option value="Iraq">Iraq</option>
+            <option value="Ireland">Ireland</option>
+            <option value="Isle of Man">Isle of Man</option>
+            <option value="Israel">Israel</option>
+            <option value="Italy">Italy</option>
+            <option value="Jamaica">Jamaica</option>
+            <option value="Japan">Japan</option>
+            <option value="Jersey">Jersey</option>
+            <option value="Jordan">Jordan</option>
+            <option value="Kazakhstan">Kazakhstan</option>
+            <option value="Kenya">Kenya</option>
+            <option value="Kiribati">Kiribati</option>
+            <option value="Korea, Democratic People's Republic of">Korea, Democratic People's Republic of</option>
+            <option value="Korea, Republic of">Korea, Republic of</option>
+            <option value="Kuwait">Kuwait</option>
+            <option value="Kyrgyzstan">Kyrgyzstan</option>
+            <option value="Lao People's Democratic Republic">Lao People's Democratic Republic</option>
+            <option value="Latvia">Latvia</option>
+            <option value="Lebanon">Lebanon</option>
+            <option value="Lesotho">Lesotho</option>
+            <option value="Liberia">Liberia</option>
+            <option value="Libyan Arab Jamahiriya">Libyan Arab Jamahiriya</option>
+            <option value="Liechtenstein">Liechtenstein</option>
+            <option value="Lithuania">Lithuania</option>
+            <option value="Luxembourg">Luxembourg</option>
+            <option value="Macao">Macao</option>
+            <option value="Macedonia, The Former Yugoslav Republic of">Macedonia, The Former Yugoslav Republic of</option>
+            <option value="Madagascar">Madagascar</option>
+            <option value="Malawi">Malawi</option>
+            <option value="Malaysia">Malaysia</option>
+            <option value="Maldives">Maldives</option>
+            <option value="Mali">Mali</option>
+            <option value="Malta">Malta</option>
+            <option value="Marshall Islands">Marshall Islands</option>
+            <option value="Martinique">Martinique</option>
+            <option value="Mauritania">Mauritania</option>
+            <option value="Mauritius">Mauritius</option>
+            <option value="Mayotte">Mayotte</option>
+            <option value="Mexico">Mexico</option>
+            <option value="Micronesia, Federated States of">Micronesia, Federated States of</option>
+            <option value="Moldova, Republic of">Moldova, Republic of</option>
+            <option value="Monaco">Monaco</option>
+            <option value="Mongolia">Mongolia</option>
+            <option value="Montenegro">Montenegro</option>
+            <option value="Montserrat">Montserrat</option>
+            <option value="Morocco">Morocco</option>
+            <option value="Mozambique">Mozambique</option>
+            <option value="Myanmar">Myanmar</option>
+            <option value="Namibia">Namibia</option>
+            <option value="Nauru">Nauru</option>
+            <option value="Nepal">Nepal</option>
+            <option value="Netherlands">Netherlands</option>
+            <option value="Netherlands Antilles">Netherlands Antilles</option>
+            <option value="New Caledonia">New Caledonia</option>
+            <option value="New Zealand">New Zealand</option>
+            <option value="Nicaragua">Nicaragua</option>
+            <option value="Niger">Niger</option>
+            <option value="Nigeria">Nigeria</option>
+            <option value="Niue">Niue</option>
+            <option value="Norfolk Island">Norfolk Island</option>
+            <option value="Northern Mariana Islands">Northern Mariana Islands</option>
+            <option value="Norway">Norway</option>
+            <option value="Oman">Oman</option>
+            <option value="Pakistan">Pakistan</option>
+            <option value="Palau">Palau</option>
+            <option value="Palestinian Territory, Occupied">Palestinian Territory, Occupied</option>
+            <option value="Panama">Panama</option>
+            <option value="Papua New Guinea">Papua New Guinea</option>
+            <option value="Paraguay">Paraguay</option>
+            <option value="Peru">Peru</option>
+            <option value="Philippines">Philippines</option>
+            <option value="Pitcairn">Pitcairn</option>
+            <option value="Poland">Poland</option>
+            <option value="Portugal">Portugal</option>
+            <option value="Puerto Rico">Puerto Rico</option>
+            <option value="Qatar">Qatar</option>
+            <option value="Reunion">Reunion</option>
+            <option value="Romania">Romania</option>
+            <option value="Russian Federation">Russian Federation</option>
+            <option value="Rwanda">Rwanda</option>
+            <option value="Saint Helena">Saint Helena</option>
+            <option value="Saint Kitts and Nevis">Saint Kitts and Nevis</option>
+            <option value="Saint Lucia">Saint Lucia</option>
+            <option value="Saint Pierre and Miquelon">Saint Pierre and Miquelon</option>
+            <option value="Saint Vincent and The Grenadines">Saint Vincent and The Grenadines</option>
+            <option value="Samoa">Samoa</option>
+            <option value="San Marino">San Marino</option>
+            <option value="Sao Tome and Principe">Sao Tome and Principe</option>
+            <option value="Saudi Arabia">Saudi Arabia</option>
+            <option value="Senegal">Senegal</option>
+            <option value="Serbia">Serbia</option>
+            <option value="Seychelles">Seychelles</option>
+            <option value="Sierra Leone">Sierra Leone</option>
+            <option value="Singapore">Singapore</option>
+            <option value="Slovakia">Slovakia</option>
+            <option value="Slovenia">Slovenia</option>
+            <option value="Solomon Islands">Solomon Islands</option>
+            <option value="Somalia">Somalia</option>
+            <option value="South Africa">South Africa</option>
+            <option value="South Georgia and The South Sandwich Islands">South Georgia and The South Sandwich Islands</option>
+            <option value="Spain">Spain</option>
+            <option value="Sri Lanka">Sri Lanka</option>
+            <option value="Sudan">Sudan</option>
+            <option value="Suriname">Suriname</option>
+            <option value="Svalbard and Jan Mayen">Svalbard and Jan Mayen</option>
+            <option value="Swaziland">Swaziland</option>
+            <option value="Sweden">Sweden</option>
+            <option value="Switzerland">Switzerland</option>
+            <option value="Syrian Arab Republic">Syrian Arab Republic</option>
+            <option value="Taiwan">Taiwan</option>
+            <option value="Tajikistan">Tajikistan</option>
+            <option value="Tanzania, United Republic of">Tanzania, United Republic of</option>
+            <option value="Thailand">Thailand</option>
+            <option value="Timor-leste">Timor-leste</option>
+            <option value="Togo">Togo</option>
+            <option value="Tokelau">Tokelau</option>
+            <option value="Tonga">Tonga</option>
+            <option value="Trinidad and Tobago">Trinidad and Tobago</option>
+            <option value="Tunisia">Tunisia</option>
+            <option value="Turkey">Turkey</option>
+            <option value="Turkmenistan">Turkmenistan</option>
+            <option value="Turks and Caicos Islands">Turks and Caicos Islands</option>
+            <option value="Tuvalu">Tuvalu</option>
+            <option value="Uganda">Uganda</option>
+            <option value="Ukraine">Ukraine</option>
+            <option value="United Arab Emirates">United Arab Emirates</option>
+            <option value="United Kingdom">United Kingdom</option>
+            <option value="United States">United States</option>
+            <option value="United States Minor Outlying Islands">United States Minor Outlying Islands</option>
+            <option value="Uruguay">Uruguay</option>
+            <option value="Uzbekistan">Uzbekistan</option>
+            <option value="Vanuatu">Vanuatu</option>
+            <option value="Venezuela">Venezuela</option>
+            <option value="Viet Nam">Viet Nam</option>
+            <option value="Virgin Islands, British">Virgin Islands, British</option>
+            <option value="Virgin Islands, U.S.">Virgin Islands, U.S.</option>
+            <option value="Wallis and Futuna">Wallis and Futuna</option>
+            <option value="Western Sahara">Western Sahara</option>
+            <option value="Yemen">Yemen</option>
+            <option value="Zambia">Zambia</option>
+            <option value="Zimbabwe">Zimbabwe</option>
+        </select>
+    </div>
+
+    <div class="manual-input" class="mb-4" style="display: none;">
+        <label class="block text-lg font-medium" for="business-details">Please provide details about your business &#40;industry, goals etc&#41;</label>
+        <textarea class="w-full px-4 py-2 border rounded-md" id="business-details" name="business-details" rows="3"></textarea>
+    </div>
+    <div class="manual-input" class="mb-4" style="display: none;">
+        <label class="block text-lg font-medium" for="linkedin-url">Please enter your linkedin profile URL</label>
+        <textarea class="w-full px-4 py-2 border rounded-md" id="linkedin-url" name="linkedin-url" rows="1"></textarea>
+    </div>
+    <div class="manual-input" class="mb-4" style="display: none;">
+        <label class="block text-lg font-medium" for="business-details">What is your annual recurring revenue in USD?</label>
+        <textarea class="w-full px-4 py-2 border rounded-md" id="business-details" name="business-details" rows="1"></textarea>
+    </div>
+    
+
+
+
+
+
+    <button type="submit" class="px-4 py-2 text-white bg-blue-500 rounded-md mt-4">Submit</button>
+</form>
+    </div>
+<!-- -->
+    </div>
+</body>
+</html>
+
+
+
+           
