@@ -231,19 +231,19 @@
         <label class="block text-lg font-medium">What is your goal?</label>
         <div class="mt-2">
             <label class="inline-flex items-center">
-                <input type="radio" name="goal" value="setup-business-dubai" class="form-radio" onclick="handleRadioClick(event)">
+                <input type="radio" name="goal" value="setup-business-dubai" class="form-radio" onclick="handleRadioClick(event)" required>
                 <span class="ml-2">I want to setup my business in Dubai</span>
             </label>
             <br>
             <br>
             <label class="inline-flex items-center">
-                <input type="radio" name="goal" value="scale-across-GCC" class="form-radio" onclick="handleRadioClick(event)">
+                <input type="radio" name="goal" value="scale-across-GCC" class="form-radio" onclick="handleRadioClick(event)" required>
                 <span class="ml-2">I want to scale across GCC</span>
             </label>
             <br>
             <br>
             <label class="inline-flex items-center">
-                <input type="radio" name="goal" value="setup-business-later" class="form-radio" onclick="handleRadioClick(event)">
+                <input type="radio" name="goal" value="setup-business-later" class="form-radio" onclick="handleRadioClick(event)" required>
                 <span class="ml-2">I want to set up my business later</span>
             </label>
         </div>
@@ -501,15 +501,15 @@
 
     <div class="manual-input" class="mb-4" style="display: none;">
         <label class="block text-lg font-medium" for="business-details">Please provide details about your business &#40;industry, goals etc&#41;</label>
-        <textarea class="w-full px-4 py-2 border rounded-md" id="business-details" name="business-details" rows="3"></textarea>
+        <textarea class="w-full px-4 py-2 border rounded-md" id="business-details" name="business-details" rows="3" required></textarea>
     </div>
     <div class="manual-input" class="mb-4" style="display: none;">
         <label class="block text-lg font-medium" for="linkedin-url">Please enter your linkedin profile URL in the format [https://linkedin.com/in/<b>yourname</b>]</label>
-        <textarea class="w-full px-4 py-2 border rounded-md" id="linkedin-url" name="linkedin-url" rows="1"></textarea>
+        <textarea class="w-full px-4 py-2 border rounded-md" id="linkedin-url" name="linkedin-url" rows="1" required></textarea>
     </div>
     <div class="manual-input" class="mb-4" style="display: none;">
         <label class="block text-lg font-medium" for="business-details">What is your annual recurring revenue in USD?</label>
-        <textarea class="w-full px-4 py-2 border rounded-md" id="business-details" name="business-details" rows="1"></textarea>
+        <textarea class="w-full px-4 py-2 border rounded-md" id="business-details" name="business-details" rows="1" required></textarea>
     </div>
     
 
