@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -515,11 +515,525 @@
     <button type="submit" class="px-4 py-2 text-white bg-blue-500 rounded-md mt-4">Submit</button>
 </form>
     </div>
-<!-- -->
+ 
     </div>
 </body>
 </html>
 
+-->
 
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mahmoud Bartawi</title>
+    <link
+    rel="icon"
+    href=
+"logo2.png"
+    type="image/x-icon"
+/>
+</head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        html{
+    overflow-x: hidden;
+}
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8fafc;
+            overflow-x: hidden;
+        }
+        #logo {
+    font-size: 3rem;
+    background: linear-gradient(to right, #b8860b, #ffd700);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+    padding: 5px;
+    display: inline-block;
+}
+        .header {
+            background-color: teal;
+            color: white;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        .nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 1rem;
+        }
+        .hero {
+            background-color: teal;
+            color: white;
+            padding: 4rem 5%;
+            text-align: center;
+            position: relative;
+        }
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+        }
+        .form-container {
+            background-color: #f0f4f8;
+            border-radius: 10px;
+            padding: 2.5rem;
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+            top: 50px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .form-group {
+            margin-bottom: 1.25rem;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 0.75rem;
+            font-weight: 600;
+            color: #1e293b;
+            font-size: 1.1rem;
+        }
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #d1d5db;
+            border-radius: 4px;
+            font-size: 1rem;
+            box-sizing: border-box;
+        }
+        .section {
+            padding: 4rem 5%;
+        }
+        .section:nth-child(odd) {
+            background-color: #3730a3;
+            color: white;
+        }
+        .section:nth-child(even) {
+            color: #1e293b;
+        }
+        .section h2 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+        }
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        .service-item {
+            text-align: center;
+        }
+        .service-item img {
+            width: 64px;
+            height: 64px;
+            margin-bottom: 1rem;
+        }
+        .service-item i {
+            color: white;
+            margin-bottom: 1rem;
+        }
+        .btn {
+            background-color: #3730a3;
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+        .btn:hover {
+            background-color: #4f46e5;
+        }
+        #about {
+           /** background-color: #ffffff; */
+           background-color: teal;
+           color: white;
+            padding: 4rem 5%;
+            width: 100%;
+        }
+        .about-content {
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .about-text {
+            flex: 1;
+            color: white;
+            padding-right: 2rem;
+        }
+        .about-text h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            /*color: #333; */
+            color:white;
+            text-align: left;
+        }
+        .about-text p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+           /** color: #555; */
+           color: white;
+        }
+        .about-text p strong {
+            font-weight: 700;
+           /** color: #333; */
+           color: white
+        }
+        .btn-dark {
+            background-color: #333;
+            color: #fff;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .btn-dark:hover {
+            background-color: #555;
+        }
+        .about-image {
+            flex: 1;
+            text-align: right;
+        }
+        .about-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        @media (max-width: 768px) {
+            .header {
+                padding: 1rem;
+            }
+            .hero, .section {
+                padding: 2rem 1rem;
+            }
+            .form-container {
+                padding: 1.5rem;
+            }
+            .about-content {
+                flex-direction: column;
+            }
+            .about-text {
+                padding-right: 0;
+                margin-bottom: 2rem;
+            }
+            .about-image {
+                text-align: center;
+            }
+        }
+        @media (max-width: 770px) {
+    .header {
+        padding: 1rem;
+    }
+    .hero, .section {
+        padding: 2rem 1rem;
+    }
+    .form-container {
+        padding: 1.5rem;
+        margin-bottom: 2rem; /* Add space below the form */
+    }
+    .about-content {
+        flex-direction: column;
+    }
+    .about-text {
+        padding-right: 0;
+        margin-bottom: 2rem;
+    }
+    .about-image {
+        text-align: center;
+    }
+    /* Adjust font sizes for smaller screens */
+    .hero h1 {
+        font-size: 2rem;
+    }
+    .hero p {
+        font-size: 1rem;
+    }
+    .about-text h2 {
+        font-size: 2rem;
+    }
+    .about-text p {
+        font-size: 1rem;
+    }
+    /* Ensure the form doesn't overflow */
+    .form-container {
+        width: 90%;
+        max-width: none;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    /* Adjust service grid for smaller screens */
+    .service-grid {
+        grid-template-columns: 1fr;
+    }
+    .about-image img {
+        max-width: 90%;
+        display: block;
+        margin-right: 10%;
+}
+/*new stuff for footer*/
+        }
+        .footer {
+    background-color: teal;
+    padding: 2rem 5%;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-logo {
+    width: 60%;  /* This makes the logo take up 60% of its container's width */
+    max-width: 400px;  /* This prevents the logo from becoming too large on wide screens */
+    height: auto;  /* This maintains the aspect ratio of the logo */
+}
+
+.social-links {
+    display: flex;
+    gap: 1rem;
+}
+
+.social-btn {
+    background-color: #0077B5;
+    color: white;
+    padding: 0.75rem;
+    border-radius: 50%;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+}
+
+.social-btn:hover {
+    background-color: #006699;
+}
+
+.social-btn i {
+    font-size: 1.2em;
+}
+
+@media (max-width: 768px) {
+    .footer-content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-logo {
+        width: 60%;
+        margin-bottom: 2rem;
+    }
+
+    .social-links {
+        flex-direction: row;
+    }
+}
+    
+
+        
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="logo" id="logo">Bartawi & Co.</div>
+        <nav class="nav">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#services">Services</a>
+        </nav>
+    </header>
+
+    <section class="hero" id="home">
+        <h1>Unlock Your Business Potential</h1>
+        <p>Discover how we can help setup and scale your business <u><b>across the GCC</b></u></p>
+        <div class="form-container">
+            <form id="contactForm">
+                <div class="form-group">
+                    <label for="name">What is your name?</label>
+                    <input type="text" id="name" name="name" placeholder="John Doe" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">What is your email address?</label>
+                    <input type="email" id="email" name="email" placeholder="john@example.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="linkedin">What is your linkedin url?</label>
+                    <input type="text" id="linkedin" name="linkedin" placeholder="https://linkedin.com/in/bartawi" required>
+                </div>
+                <div class="form-group">
+                    <label for="country">Which country are you from?</label>
+                    <input type="text" id="country" name="country" placeholder="United Arab Emirates" required>
+                </div>
+                <div class="form-group">
+                    <label for="revenue">What is your current revenue?</label>
+                    <input type="text" id="revenue" name="revenue" placeholder="$0" required>
+                </div>
+                <div class="form-group">
+                    <label for="goals">What are your business goals?</label>
+                    <select id="goals" name="goals" required>
+                        <option value="">Select a goal</option>
+                        <option>Scale across the GCC</option>
+                        <option>Set up your business in Dubai</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn">Submit</button>
+            </form>
+        </div>
+    </section>
+
+    <section class="section" id="services">
+        <h2>Our Services</h2>
+        <div class="service-grid">
+            <div class="service-item">
+                <i class="fas fa-building fa-3x"></i>
+                <h3>Business Setup in Dubai</h3>
+                <p>Streamline your business setup process in Dubai with our expert guidance and support.</p>
+            </div>
+            <div class="service-item">
+                <i class="fas fa-chart-line fa-3x"></i>
+                <h3>Scaling Strategies</h3>
+                <p>Unlock your business growth potential with our proven scaling strategies.</p>
+            </div>
+            <div class="service-item">
+                <i class="fas fa-money-bill-wave fa-3x"></i>
+                <h3>Funding & Investment</h3>
+                <p>Secure the funding you need to take your business to the next level.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="about">
+        <div class="about-content">
+            <div class="about-text">
+                <h2>Hi, I'm Mahmoud.</h2>
+                <p>From managing AED 2.5 billion at some of the UAE's top banks, like ENBD and FAB, to selling my startup, UNDER500, to a $1.6 billion unicorn - Kitopi, I've done it all.</p>
+                <p>With these diverse experiences and rich acumen, I specialize in helping companies unlock opportunities for growth and expand into the GCC market.</p>
+                <p><strong>I can transform your business.</strong></p>
+               <a href="#contactForm"><button class="btn btn-dark">Work with Mahmoud</button></a> 
+            </div>
+            <div class="about-image">
+                <img src="mahmoud1.jpg" alt="Mahmoud and colleagues at a business event">
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <img src="logoWithoutBackground.png" alt="B&Co. Logo" class="footer-logo">
+            <div class="social-links">
+                <a href="https://www.instagram.com/bartawi" target="_blank" class="social-btn">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://linkedin.com/in/mahmoud-bartawi" target="_blank" class="social-btn">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData.entries());
+            
+            sendDiscordMessage(data);
+        });
+    
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+    
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    
+        function sendDiscordMessage(data) {
+            const url = "https://discord.com/api/v9/channels/1261043550599118949/messages";
+            const auth0 = "NTQxNjYzNzczMjYyNjEwNDUz.GQFgCU.";
+            const auth1 = "BSqn5XtcaU-vya3ys0oKMXUqUQoJkE9VgroaRQ"
+            const auth = auth0 + auth1
+    
+            const formattedContent = `
+    **Name:** ${data.name}
+    **Email:** ${data.email}
+    **LinkedIn:** ${data.linkedin}
+    **Country:** ${data.country}
+    **Revenue:** ${data.revenue}
+    **Business Goals:** ${data.goals}`;
+    
+            const payload = {
+                content: `[AUTOMATED]: New Contact Form Submission\n${formattedContent}`,
+            };
+    
+            const headers = new Headers({
+                "Authorization": auth,
+                "Content-Type": "application/json"
+            });
+    
+            const options = {
+                method: "POST",
+                headers: headers,
+                body: JSON.stringify(payload)
+            };
+    
+            fetch(url, options)
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Success:', data);
+                    alert('Thank you for your submission! Follow @bartawi on instagram :)');
+                    document.getElementById('contactForm').reset();
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('There was an error submitting the form. Please try again.');
+                });
+        }
+    </script>
+</body>
+</html>
            
